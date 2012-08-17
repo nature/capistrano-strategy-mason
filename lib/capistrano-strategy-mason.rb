@@ -1,9 +1,2 @@
-require "capistrano-strategy-mason/version"
-
-module Capistrano
-  module Strategy
-    module Mason
-      # Your code goes here...
-    end
-  end
-end
+require 'capistrano/recipes/deploy/strategy/mason'
+require 'capistrano-strategy-mason/version'
