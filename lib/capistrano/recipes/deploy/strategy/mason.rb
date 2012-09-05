@@ -26,6 +26,7 @@ module Capistrano
 
         private
         def streaming_system(cmd)
+          begin
             PTY.spawn(cmd) { |stdout, _, _|
               begin
                 stdout.each { |line| logger.trace(line) }
@@ -33,6 +34,9 @@ module Capistrano
                 # NOOP: IO stream ended.
               end
             }
+          rescue PTY::ChildExited
+            # Some BS rescue as per the internetz
+          end
         end
 
         def run_copy_cache_strategy
